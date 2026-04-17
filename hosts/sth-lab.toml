@@ -1,0 +1,30 @@
+[defaults]
+username = "sthuser"
+port = 22
+
+[[hosts]]
+name = "thor"
+hostname = "thor"
+tags = ["arm64", "neoverse-v3ae"]
+
+[[hosts]]
+name = "xeon6soc36c"
+hostname = "xeon6soc36c"
+display_name = "Intel Xeon 6553P-B"
+tags = ["x86_64", "xeon", "smt"]
+
+[[hosts]]
+name = "xeon6soc40c"
+hostname = "xeon6soc40c"
+display_name = "Intel Xeon 6716P-B"
+tags = ["x86_64", "xeon", "smt"]
+
+[[hosts]]
+name = "spark-1de6"
+hostname = "spark-1de6"
+tags = ["arm64", "heterogeneous"]
+
+[[hosts]]
+name = "turind8"
+hostname = "turind8"
+tags = ["x86_64", "epyc", "smt"]
