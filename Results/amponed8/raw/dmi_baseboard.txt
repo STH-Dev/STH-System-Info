@@ -1,0 +1,37 @@
+ubuntu
+
+# dmidecode 3.5
+Getting SMBIOS data from sysfs.
+SMBIOS 3.6.0 present.
+# SMBIOS implementations newer than version 3.5.0 are not
+# fully supported by this version of dmidecode.
+
+Handle 0x0002, DMI type 2, 15 bytes
+Base Board Information
+	Manufacturer: ASRockRack
+	Product Name: AMPONED8-2T/BCM
+	Version:                       
+	Serial Number: NFRNF8000800011
+	Asset Tag:                       
+	Features:
+		Board is a hosting board
+		Board is replaceable
+	Location In Chassis:                       
+	Chassis Handle: 0x0003
+	Type: Motherboard
+	Contained Object Handles: 0
+
+Handle 0x0004, DMI type 10, 6 bytes
+On Board Device Information
+	Type: Video
+	Status: Enabled
+	Description: Device 1
+
+Handle 0x000A, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: Onboard VGA
+	Type: Video
+	Status: Enabled
+	Type Instance: 1
+	Bus Address: 0004:03:00.0
+
