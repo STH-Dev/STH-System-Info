@@ -1,0 +1,42 @@
+ubuntu
+
+DMI   SMP   PA-RISC       device-tree           SPD   memory      /proc/cpuinfo             CPUID     PCI (sysfs)           ISA PnP       PnP (sysfs)           PCMCIA      PCMCIA      Virtual I/O (VIRTIO) devices                            IBM Virtual I/O (VIO)                     kernel device tree (sysfs)                          USB   IDE   SCSI    NVMe    MMC   sound     graphics        input     S/390 devices             Network interfaces                  Framebuffer devices                   Display       CPUFreq       ABI     *-network:0 DISABLED
+       description: Ethernet interface
+       product: BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller
+       vendor: Broadcom Inc. and subsidiaries
+       physical id: 0
+       bus info: pci@0001:03:00.0
+       logical name: enP1p3s0f0np0
+       version: 01
+       serial: 48:21:0b:7f:90:ed
+       size: 1Gbit/s
+       capacity: 10Gbit/s
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm vpd msix pciexpress bus_master cap_list rom ethernet physical tp 1000bt-fd 10000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=bnxt_en driverversion=6.8.0-90-generic duplex=full firmware=232.0.155.2/pkg 232.1.132.8 latency=0 link=no multicast=yes port=twisted pair speed=1Gbit/s
+       resources: iomemory:74010-7400f iomemory:74010-7400f iomemory:74010-7400f irq:65 memory:740100200000-74010020ffff memory:740100000000-7401000fffff memory:740100220000-740100221fff memory:740005800000-74000587ffff
+  *-network:1
+       description: Ethernet interface
+       product: BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller
+       vendor: Broadcom Inc. and subsidiaries
+       physical id: 0.1
+       bus info: pci@0001:03:00.1
+       logical name: enP1p3s0f1np1
+       version: 01
+       serial: 48:21:0b:7f:90:ee
+       size: 1Gbit/s
+       capacity: 10Gbit/s
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm vpd msix pciexpress bus_master cap_list rom ethernet physical tp 1000bt-fd 10000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=bnxt_en driverversion=6.8.0-90-generic duplex=full firmware=232.0.155.2/pkg 232.1.132.8 ip=10.11.11.210 latency=0 link=yes multicast=yes port=twisted pair speed=1Gbit/s
+       resources: iomemory:74010-7400f iomemory:74010-7400f iomemory:74010-7400f irq:219 memory:740100210000-74010021ffff memory:740100100000-7401001fffff memory:740100222000-740100223fff memory:740005880000-7400058fffff
+  *-network DISABLED
+       description: Ethernet interface
+       physical id: 2
+       bus info: usb@1:1.3.5
+       logical name: enx02210b7f905a
+       serial: 02:21:0b:7f:90:5a
+       capabilities: ethernet physical
+       configuration: autonegotiation=off broadcast=yes driver=cdc_ether driverversion=6.8.0-90-generic duplex=half firmware=CDC Ethernet Device link=no multicast=yes port=twisted pair

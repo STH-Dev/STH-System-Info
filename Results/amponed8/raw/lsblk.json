@@ -1,0 +1,51 @@
+{
+   "blockdevices": [
+      {
+         "name": "nvme0n1",
+         "model": "WD_BLACK SN850X 2000GB",
+         "size": "1.8T",
+         "type": "disk",
+         "tran": "nvme",
+         "vendor": null,
+         "mountpoint": null,
+         "children": [
+            {
+               "name": "nvme0n1p1",
+               "model": null,
+               "size": "1G",
+               "type": "part",
+               "tran": "nvme",
+               "vendor": null,
+               "mountpoint": "/boot/efi"
+            },{
+               "name": "nvme0n1p2",
+               "model": null,
+               "size": "2G",
+               "type": "part",
+               "tran": "nvme",
+               "vendor": null,
+               "mountpoint": "/boot"
+            },{
+               "name": "nvme0n1p3",
+               "model": null,
+               "size": "1.8T",
+               "type": "part",
+               "tran": "nvme",
+               "vendor": null,
+               "mountpoint": null,
+               "children": [
+                  {
+                     "name": "ubuntu--vg-ubuntu--lv",
+                     "model": null,
+                     "size": "100G",
+                     "type": "lvm",
+                     "tran": null,
+                     "vendor": null,
+                     "mountpoint": "/"
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

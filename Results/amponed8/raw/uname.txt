@@ -1,0 +1,1 @@
+Linux amponed8 6.8.0-90-generic #91-Ubuntu SMP PREEMPT_DYNAMIC Tue Nov 18 13:53:54 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
