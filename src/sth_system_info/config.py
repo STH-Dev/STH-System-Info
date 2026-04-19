@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import os
 from pathlib import Path
+import re
 import tomllib
 
 
@@ -36,6 +38,19 @@ class AppConfig:
         return by_name[name]
 
 
+_ENV_VAR_PATTERN = re.compile(r"\$\{([^}]+)\}")
+
+
+def _expand_env(value: str | None) -> str | None:
+    if value is None:
+        return None
+
+    def replace(match: re.Match[str]) -> str:
+        return os.environ.get(match.group(1), "")
+
+    return _ENV_VAR_PATTERN.sub(replace, value)
+
+
 def load_config(path: Path) -> AppConfig:
     data = tomllib.loads(path.read_text())
     defaults_raw = data.get("defaults", {})
@@ -55,7 +70,7 @@ def load_config(path: Path) -> AppConfig:
                     if item.get("display_name") is not None
                     else None
                 ),
-                proxy_command=(
+                proxy_command=_expand_env(
                     str(item["proxy_command"])
                     if item.get("proxy_command") is not None
                     else None
