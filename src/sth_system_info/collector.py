@@ -227,22 +227,172 @@ def _parse_dmidecode_sections(text: str, section_name: str) -> list[dict[str, st
     return blocks
 
 
+def _ordered_unique(values: list[str]) -> list[str]:
+    seen: set[str] = set()
+    result: list[str] = []
+    for value in values:
+        if value in seen:
+            continue
+        seen.add(value)
+        result.append(value)
+    return result
+
+
+def _clean_dmi_field(value: str | None) -> str | None:
+    if value is None:
+        return None
+    cleaned = value.strip()
+    if not cleaned or cleaned in {"Unknown", "None", "Not Specified"}:
+        return None
+    return cleaned
+
+
+def _parse_dmi_capacity_gib(value: str | None) -> float | None:
+    cleaned = _clean_dmi_field(value)
+    if cleaned is None or cleaned == "No Module Installed":
+        return None
+    match = re.match(r"^([0-9.]+)\s*([KMGT])B$", cleaned, flags=re.IGNORECASE)
+    if not match:
+        return None
+    amount = float(match.group(1))
+    unit = match.group(2).upper()
+    factors = {
+        "K": 1 / (1024 * 1024),
+        "M": 1 / 1024,
+        "G": 1,
+        "T": 1024,
+    }
+    factor = factors.get(unit)
+    if factor is None:
+        return None
+    return amount * factor
+
+
+def _format_counted_values(values: list[str]) -> list[str]:
+    counts: dict[str, int] = {}
+    for value in values:
+        counts[value] = counts.get(value, 0) + 1
+    return [f"{count} x {value}" for value, count in counts.items()]
+
+
+def _parse_optional_int(value: str | None) -> int | None:
+    cleaned = _clean_dmi_field(value)
+    if cleaned is None:
+        return None
+    match = re.search(r"\d+", cleaned)
+    if not match:
+        return None
+    return int(match.group(0))
+
+
+def _infer_memory_channel(locator: str | None, bank_locator: str | None) -> tuple[str | None, str | None]:
+    candidates = [
+        ("bank_locator", _clean_dmi_field(bank_locator)),
+        ("locator", _clean_dmi_field(locator)),
+    ]
+    for source, raw in candidates:
+        if raw is None:
+            continue
+        upper = raw.upper()
+        channel_match = re.search(r"\bCHANNEL\s*([A-Z0-9]+)\b", upper)
+        if channel_match:
+            return (f"Channel {channel_match.group(1)}", f"{source}:channel")
+    for source, raw in (("locator", _clean_dmi_field(locator)), ("bank_locator", _clean_dmi_field(bank_locator))):
+        if raw is None:
+            continue
+        upper = raw.upper()
+        dimm_group = re.search(r"\bDIMM[_\s-]*([A-Z]+)\d+\b", upper)
+        if dimm_group:
+            return (f"DIMM {dimm_group.group(1)}", f"{source}:dimm-group")
+    for source, raw in candidates:
+        if raw is None:
+            continue
+        return (raw, source)
+    return (None, None)
+
+
 def _memory_summary_from_dmi(text: str) -> dict[str, Any]:
+    arrays = _parse_dmidecode_sections(text, "Physical Memory Array")
     devices = _parse_dmidecode_sections(text, "Memory Device")
-    populated: list[dict[str, str]] = []
+    populated: list[dict[str, Any]] = []
     for device in devices:
-        size = device.get("Size", "")
-        if size and size not in {"No Module Installed", "Unknown"}:
-            populated.append(device)
-    speeds = [device.get("Configured Memory Speed") or device.get("Speed") for device in populated]
-    speeds = [speed for speed in speeds if speed and speed not in {"Unknown", "0 MT/s"}]
-    types = [device.get("Type") for device in populated if device.get("Type") and device.get("Type") != "Unknown"]
+        size = _clean_dmi_field(device.get("Size"))
+        size_gib = _parse_dmi_capacity_gib(size)
+        if size is None or size == "No Module Installed" or size_gib is None:
+            continue
+        locator = _clean_dmi_field(device.get("Locator"))
+        bank_locator = _clean_dmi_field(device.get("Bank Locator"))
+        channel_label, channel_source = _infer_memory_channel(locator, bank_locator)
+        populated.append(
+            {
+                "locator": locator,
+                "bank_locator": bank_locator,
+                "size": size,
+                "size_gib": size_gib,
+                "form_factor": _clean_dmi_field(device.get("Form Factor")),
+                "type": _clean_dmi_field(device.get("Type")),
+                "type_detail": _clean_dmi_field(device.get("Type Detail")),
+                "configured_speed": _clean_dmi_field(device.get("Configured Memory Speed")),
+                "rated_speed": _clean_dmi_field(device.get("Speed")),
+                "manufacturer": _clean_dmi_field(device.get("Manufacturer")),
+                "part_number": _clean_dmi_field(device.get("Part Number")),
+                "rank": _clean_dmi_field(device.get("Rank")),
+                "configured_voltage": _clean_dmi_field(device.get("Configured Voltage")),
+                "channel_label": channel_label,
+                "channel_source": channel_source,
+            }
+        )
+    configured_speeds = [
+        device["configured_speed"]
+        for device in populated
+        if device.get("configured_speed") and device["configured_speed"] != "0 MT/s"
+    ]
+    rated_speeds = [
+        device["rated_speed"]
+        for device in populated
+        if device.get("rated_speed") and device["rated_speed"] != "0 MT/s"
+    ]
+    types = [device["type"] for device in populated if device.get("type")]
+    type_details = [device["type_detail"] for device in populated if device.get("type_detail")]
+    form_factors = [device["form_factor"] for device in populated if device.get("form_factor")]
+    manufacturers = [device["manufacturer"] for device in populated if device.get("manufacturer")]
+    part_numbers = [device["part_number"] for device in populated if device.get("part_number")]
+    channel_labels = [device["channel_label"] for device in populated if device.get("channel_label")]
+    channel_sources = [device["channel_source"] for device in populated if device.get("channel_source")]
+    array_device_count = sum(
+        parsed
+        for parsed in (_parse_optional_int(array.get("Number Of Devices")) for array in arrays)
+        if parsed is not None
+    ) or None
+    max_capacity_values = [
+        value
+        for value in (_clean_dmi_field(array.get("Maximum Capacity")) for array in arrays)
+        if value is not None
+    ]
+    capacity_layout = _format_counted_values([device["size"] for device in populated if device.get("size")])
+    installed_gib = sum(device["size_gib"] for device in populated if device.get("size_gib") is not None)
     return {
         "devices": populated,
         "slot_count": len(devices),
+        "array_device_count": array_device_count,
         "populated_count": len(populated),
+        "filled_channel_count": len(_ordered_unique(channel_labels)) if channel_labels else None,
+        "filled_channel_labels": _ordered_unique(channel_labels),
+        "filled_channel_sources": _ordered_unique(channel_sources),
+        "installed_gib": installed_gib or None,
+        "maximum_capacity": max_capacity_values[0] if len(max_capacity_values) == 1 else ", ".join(max_capacity_values) or None,
         "memory_type": types[0] if types else None,
-        "memory_speed": speeds[0] if speeds else None,
+        "memory_types": _ordered_unique(types),
+        "type_details": _ordered_unique(type_details),
+        "form_factors": _ordered_unique(form_factors),
+        "memory_speed": configured_speeds[0] if configured_speeds else (rated_speeds[0] if rated_speeds else None),
+        "configured_memory_speed": configured_speeds[0] if configured_speeds else None,
+        "configured_memory_speeds": _ordered_unique(configured_speeds),
+        "rated_memory_speed": rated_speeds[0] if rated_speeds else None,
+        "rated_memory_speeds": _ordered_unique(rated_speeds),
+        "capacity_layout": capacity_layout,
+        "manufacturers": _ordered_unique(manufacturers),
+        "part_numbers": _ordered_unique(part_numbers),
     }
 
 
@@ -261,6 +411,20 @@ def _render_system_profile(summary: dict[str, Any]) -> str:
     software = summary["software"]
     network = summary["network"]
     collection = summary["collection"]
+    installed_capacity = memory.get("installed_gib")
+    total_capacity = memory.get("total_gib")
+
+    def memory_value(value: Any, suffix: str = "") -> str:
+        if value is None:
+            return "Unknown"
+        if isinstance(value, float):
+            return f"{value:.1f}{suffix}"
+        return f"{value}{suffix}"
+
+    def joined(values: list[str] | None) -> str:
+        if not values:
+            return "Unknown"
+        return ", ".join(values)
 
     lines = [
         f"# System Profile: {host['name']}",
@@ -300,16 +464,53 @@ def _render_system_profile(summary: dict[str, Any]) -> str:
         "",
         "| Field | Value |",
         "|---|---|",
-        f"| Total memory | {memory.get('total_gib') or 'Unknown'} GiB |",
+        f"| Total memory | {memory_value(total_capacity, ' GiB')} |",
+        f"| Installed memory from DMI | {memory_value(installed_capacity, ' GiB')} |",
         f"| Populated DIMMs / devices | {memory.get('populated_count') or 0} / {memory.get('slot_count') or 0} |",
-        f"| Memory type | {memory.get('memory_type') or 'Unknown'} |",
-        f"| Memory speed | {memory.get('memory_speed') or 'Unknown'} |",
+        f"| Filled memory channels (best-effort) | {memory.get('filled_channel_count') or 'Unknown'} |",
+        f"| Channel inference source(s) | {joined(memory.get('filled_channel_sources'))} |",
+        f"| Memory device slots in array | {memory.get('array_device_count') or memory.get('slot_count') or 'Unknown'} |",
+        f"| Maximum array capacity | {memory.get('maximum_capacity') or 'Unknown'} |",
+        f"| DIMM capacities | {joined(memory.get('capacity_layout'))} |",
+        f"| DIMM type(s) | {joined(memory.get('memory_types'))} |",
+        f"| DIMM detail(s) | {joined(memory.get('type_details'))} |",
+        f"| Form factor(s) | {joined(memory.get('form_factors'))} |",
+        f"| Current configured speed(s) | {joined(memory.get('configured_memory_speeds'))} |",
+        f"| Rated DIMM speed(s) | {joined(memory.get('rated_memory_speeds'))} |",
+        f"| Manufacturer(s) | {joined(memory.get('manufacturers'))} |",
+        f"| Part number(s) | {joined(memory.get('part_numbers'))} |",
         "",
-        "## Storage",
+        "### DIMM Inventory",
         "",
-        "| Device | Type | Size | Model |",
-        "|---|---|---|---|",
+        "| Locator | Bank | Channel | Size | Type | Running | Rated | Manufacturer | Part Number | Rank |",
+        "|---|---|---|---|---|---|---|---|---|---|",
     ]
+
+    for device in memory.get("devices", []):
+        type_display = " / ".join(
+            value
+            for value in [device.get("type"), device.get("type_detail")]
+            if value
+        ) or "Unknown"
+        lines.append(
+            f"| {device.get('locator') or 'Unknown'} | {device.get('bank_locator') or 'Unknown'} | "
+            f"{device.get('channel_label') or 'Unknown'} | {device.get('size') or 'Unknown'} | {type_display} | "
+            f"{device.get('configured_speed') or 'Unknown'} | {device.get('rated_speed') or 'Unknown'} | "
+            f"{device.get('manufacturer') or 'Unknown'} | {device.get('part_number') or 'Unknown'} | "
+            f"{device.get('rank') or 'Unknown'} |"
+        )
+    if lines[-1] == "|---|---|---|---|---|---|---|---|---|---|":
+        lines.append("| — | — | — | — | — | — | — | — | — | — |")
+
+    lines.extend(
+        [
+            "",
+            "## Storage",
+            "",
+            "| Device | Type | Size | Model |",
+            "|---|---|---|---|",
+        ]
+    )
 
     for device in storage.get("devices", []):
         if device.get("type") == "disk":
@@ -430,9 +631,25 @@ def _build_summary(
         "memory": {
             "total_gib": _parse_meminfo_total_gib(meminfo_text),
             "slot_count": dmi_memory["slot_count"],
+            "array_device_count": dmi_memory["array_device_count"],
             "populated_count": dmi_memory["populated_count"],
+            "filled_channel_count": dmi_memory["filled_channel_count"],
+            "filled_channel_labels": dmi_memory["filled_channel_labels"],
+            "filled_channel_sources": dmi_memory["filled_channel_sources"],
+            "installed_gib": dmi_memory["installed_gib"],
+            "maximum_capacity": dmi_memory["maximum_capacity"],
             "memory_type": dmi_memory["memory_type"],
+            "memory_types": dmi_memory["memory_types"],
+            "type_details": dmi_memory["type_details"],
+            "form_factors": dmi_memory["form_factors"],
             "memory_speed": dmi_memory["memory_speed"],
+            "configured_memory_speed": dmi_memory["configured_memory_speed"],
+            "configured_memory_speeds": dmi_memory["configured_memory_speeds"],
+            "rated_memory_speed": dmi_memory["rated_memory_speed"],
+            "rated_memory_speeds": dmi_memory["rated_memory_speeds"],
+            "capacity_layout": dmi_memory["capacity_layout"],
+            "manufacturers": dmi_memory["manufacturers"],
+            "part_numbers": dmi_memory["part_numbers"],
             "devices": dmi_memory["devices"],
         },
         "storage": {
