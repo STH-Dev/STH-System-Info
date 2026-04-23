@@ -1,7 +1,7 @@
 from pathlib import Path
 import json
 
-from sth_system_info.collector import _build_summary, CommandCapture
+from sth_system_info.collector import _build_summary, _render_system_profile, CommandCapture
 from sth_system_info.config import HostConfig
 
 
@@ -55,11 +55,48 @@ def test_build_summary_parses_core_fields(tmp_path: Path) -> None:
     (raw / "dmi_memory.txt").write_text(
         "\n".join(
             [
+                "Handle 0x0000, DMI type 16, 23 bytes",
+                "Physical Memory Array",
+                "\tLocation: System Board Or Motherboard",
+                "\tUse: System Memory",
+                "\tMaximum Capacity: 512 GB",
+                "\tNumber Of Devices: 4",
+                "",
                 "Handle 0x0001, DMI type 17, 92 bytes",
                 "Memory Device",
                 "\tSize: 64 GB",
+                "\tForm Factor: DIMM",
+                "\tLocator: CPU0_DIMM_A1",
+                "\tBank Locator: P0 CHANNEL A DIMM 0",
                 "\tType: DDR5",
+                "\tType Detail: Registered (Buffered)",
+                "\tSpeed: 6400 MT/s",
                 "\tConfigured Memory Speed: 5600 MT/s",
+                "\tManufacturer: Example Memory",
+                "\tPart Number: EX-6400-64G",
+                "\tRank: 2",
+                "\tConfigured Voltage: 1.1 V",
+                "",
+                "Handle 0x0002, DMI type 17, 92 bytes",
+                "Memory Device",
+                "\tSize: 64 GB",
+                "\tForm Factor: DIMM",
+                "\tLocator: CPU0_DIMM_B1",
+                "\tBank Locator: P0 CHANNEL B DIMM 0",
+                "\tType: DDR5",
+                "\tType Detail: Registered (Buffered)",
+                "\tSpeed: 6400 MT/s",
+                "\tConfigured Memory Speed: 5600 MT/s",
+                "\tManufacturer: Example Memory",
+                "\tPart Number: EX-6400-64G",
+                "\tRank: 2",
+                "\tConfigured Voltage: 1.1 V",
+                "",
+                "Handle 0x0003, DMI type 17, 92 bytes",
+                "Memory Device",
+                "\tSize: No Module Installed",
+                "\tLocator: CPU0_DIMM_C1",
+                "\tBank Locator: P0 CHANNEL C DIMM 0",
             ]
         )
     )
@@ -116,5 +153,24 @@ def test_build_summary_parses_core_fields(tmp_path: Path) -> None:
     assert summary["cpu"]["logical_cores"] == 8
     assert summary["cpu"]["l3_cache_kib"] == 36864
     assert summary["memory"]["memory_type"] == "DDR5"
+    assert summary["memory"]["memory_types"] == ["DDR5"]
+    assert summary["memory"]["type_details"] == ["Registered (Buffered)"]
     assert summary["memory"]["total_gib"] == 64.0
+    assert summary["memory"]["installed_gib"] == 128.0
+    assert summary["memory"]["array_device_count"] == 4
+    assert summary["memory"]["slot_count"] == 3
+    assert summary["memory"]["populated_count"] == 2
+    assert summary["memory"]["filled_channel_count"] == 2
+    assert summary["memory"]["configured_memory_speed"] == "5600 MT/s"
+    assert summary["memory"]["rated_memory_speed"] == "6400 MT/s"
+    assert summary["memory"]["capacity_layout"] == ["2 x 64 GB"]
+    assert summary["memory"]["part_numbers"] == ["EX-6400-64G"]
+    assert summary["memory"]["devices"][0]["channel_label"] == "Channel A"
+    assert summary["memory"]["devices"][0]["manufacturer"] == "Example Memory"
     assert summary["network"]["interfaces"][0]["product"] == "Example NIC"
+
+    profile = _render_system_profile(summary)
+    assert "| Filled memory channels (best-effort) | 2 |" in profile
+    assert "| Current configured speed(s) | 5600 MT/s |" in profile
+    assert "| Rated DIMM speed(s) | 6400 MT/s |" in profile
+    assert "| CPU0_DIMM_A1 | P0 CHANNEL A DIMM 0 | Channel A | 64 GB |" in profile
