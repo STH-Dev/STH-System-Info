@@ -1,0 +1,32 @@
+sthuser
+*******       
+DMI   SMP   PA-RISC       device-tree           SPD   memory      /proc/cpuinfo             CPUID     PCI (sysfs)           ISA PnP       PnP (sysfs)           PCMCIA      PCMCIA      Virtual I/O (VIRTIO) devices                            IBM Virtual I/O (VIO)                     kernel device tree (sysfs)                          USB   IDE   SCSI    NVMe    MMC   sound     graphics        input     S/390 devices             Network interfaces                  Framebuffer devices                   Display       CPUFreq       ABI     *-network
+       description: Ethernet interface
+       product: RTL8125 2.5GbE Controller
+       vendor: Realtek Semiconductor Co., Ltd.
+       physical id: 0
+       bus info: pci@0000:c1:00.0
+       logical name: eno1
+       version: 05
+       serial: 84:47:09:5f:51:4a
+       size: 100Mbit/s
+       capacity: 1Gbit/s
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm msi pciexpress msix vpd bus_master cap_list ethernet physical tp mii 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=r8169 driverversion=7.0.0-14-generic duplex=full firmware=rtl8125b-2_0.0.2 07/13/20 ip=10.11.11.154 latency=0 link=yes multicast=yes port=twisted pair speed=100Mbit/s
+       resources: irq:25 ioport:f000(size=256) memory:dd200000-dd20ffff memory:dd210000-dd213fff
+  *-network
+       description: Ethernet interface
+       product: MT7925 (RZ717) Wi-Fi 7 160MHz
+       vendor: MEDIATEK Corp.
+       physical id: 0
+       bus info: pci@0000:c3:00.0
+       logical name: wlp195s0
+       version: 00
+       serial: 4c:23:38:fb:3d:4f
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pciexpress msi pm bus_master cap_list ethernet physical
+       configuration: broadcast=yes driver=mt7925e driverversion=7.0.0-14-generic firmware=____000000-20260106153120 ip=10.11.11.247 latency=0 link=yes multicast=yes
+       resources: irq:155 memory:dc600000-dc7fffff memory:dc800000-dc807fff

@@ -1,0 +1,1037 @@
+{
+  "schema_version": "1.0.0",
+  "collector_version": "0.1.0",
+  "captured_at": "2026-04-25T21:26:36.798767+00:00",
+  "host": {
+    "name": "evo-x2",
+    "hostname": "evo-x2",
+    "display_name": null,
+    "username": "sthuser",
+    "port": 22,
+    "tags": [
+      "x86_64"
+    ]
+  },
+  "cpu": {
+    "architecture": "x86_64",
+    "vendor": "AuthenticAMD",
+    "display_model": "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S",
+    "model_names": [
+      "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S"
+    ],
+    "sockets": 1,
+    "physical_cores": 16,
+    "logical_cores": 32,
+    "threads_per_core": 2,
+    "numa_nodes": 1,
+    "base_mhz": null,
+    "max_mhz": "5187.5000",
+    "governor": "powersave",
+    "l1d_cache_kib": 768,
+    "l1i_cache_kib": 512,
+    "l2_cache_kib": 16384,
+    "l3_cache_kib": 65536,
+    "flags_count": 166,
+    "topology": {
+      "summary": {
+        "architecture": "x86_64",
+        "model_names": [
+          "AMD RYZEN AI MAX+ 395 w/ Radeon 8060S"
+        ],
+        "logical_cpu_count": 32,
+        "sockets": 1,
+        "threads_per_core": 2,
+        "numa_nodes": 1
+      },
+      "physical_core_count": 16,
+      "logical_cpu_count": 32,
+      "primary_cpus": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "logical_cpus": [
+        0,
+        16,
+        1,
+        17,
+        2,
+        18,
+        3,
+        19,
+        4,
+        20,
+        5,
+        21,
+        6,
+        22,
+        7,
+        23,
+        8,
+        24,
+        9,
+        25,
+        10,
+        26,
+        11,
+        27,
+        12,
+        28,
+        13,
+        29,
+        14,
+        30,
+        15,
+        31
+      ],
+      "sibling_pairs": [
+        [
+          0,
+          16
+        ],
+        [
+          1,
+          17
+        ],
+        [
+          2,
+          18
+        ],
+        [
+          3,
+          19
+        ],
+        [
+          4,
+          20
+        ],
+        [
+          5,
+          21
+        ],
+        [
+          6,
+          22
+        ],
+        [
+          7,
+          23
+        ],
+        [
+          8,
+          24
+        ],
+        [
+          9,
+          25
+        ],
+        [
+          10,
+          26
+        ],
+        [
+          11,
+          27
+        ],
+        [
+          12,
+          28
+        ],
+        [
+          13,
+          29
+        ],
+        [
+          14,
+          30
+        ],
+        [
+          15,
+          31
+        ]
+      ],
+      "groups": [
+        {
+          "socket": 0,
+          "core": 0,
+          "node": 0,
+          "cpus": [
+            0,
+            16
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 1,
+          "node": 0,
+          "cpus": [
+            1,
+            17
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 2,
+          "node": 0,
+          "cpus": [
+            2,
+            18
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 3,
+          "node": 0,
+          "cpus": [
+            3,
+            19
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 4,
+          "node": 0,
+          "cpus": [
+            4,
+            20
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 5,
+          "node": 0,
+          "cpus": [
+            5,
+            21
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 6,
+          "node": 0,
+          "cpus": [
+            6,
+            22
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 7,
+          "node": 0,
+          "cpus": [
+            7,
+            23
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 8,
+          "node": 0,
+          "cpus": [
+            8,
+            24
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 9,
+          "node": 0,
+          "cpus": [
+            9,
+            25
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 10,
+          "node": 0,
+          "cpus": [
+            10,
+            26
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 11,
+          "node": 0,
+          "cpus": [
+            11,
+            27
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 12,
+          "node": 0,
+          "cpus": [
+            12,
+            28
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 13,
+          "node": 0,
+          "cpus": [
+            13,
+            29
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 14,
+          "node": 0,
+          "cpus": [
+            14,
+            30
+          ]
+        },
+        {
+          "socket": 0,
+          "core": 15,
+          "node": 0,
+          "cpus": [
+            15,
+            31
+          ]
+        }
+      ]
+    }
+  },
+  "memory": {
+    "total_gib": 122.68716430664062,
+    "slot_count": 8,
+    "array_device_count": 8,
+    "populated_count": 8,
+    "filled_channel_count": 8,
+    "filled_channel_labels": [
+      "Channel A",
+      "Channel B",
+      "Channel C",
+      "Channel D",
+      "Channel E",
+      "Channel F",
+      "Channel G",
+      "Channel H"
+    ],
+    "filled_channel_sources": [
+      "bank_locator:channel"
+    ],
+    "installed_gib": 128.0,
+    "maximum_capacity": "64 GB",
+    "memory_type": "LPDDR5",
+    "memory_types": [
+      "LPDDR5"
+    ],
+    "type_details": [
+      "Synchronous Unbuffered (Unregistered)"
+    ],
+    "form_factors": [
+      "Other"
+    ],
+    "memory_speed": "8000 MT/s",
+    "configured_memory_speed": "8000 MT/s",
+    "configured_memory_speeds": [
+      "8000 MT/s"
+    ],
+    "rated_memory_speed": "8532 MT/s",
+    "rated_memory_speeds": [
+      "8532 MT/s"
+    ],
+    "capacity_layout": [
+      "8 x 16 GB"
+    ],
+    "manufacturers": [
+      "Micron Technology"
+    ],
+    "part_numbers": [
+      "MT62F4G32D8DV-023 WT"
+    ],
+    "devices": [
+      {
+        "locator": "DIMM 0",
+        "bank_locator": "P0 CHANNEL A",
+        "size": "16 GB",
+        "size_gib": 16.0,
+        "form_factor": "Other",
+        "type": "LPDDR5",
+        "type_detail": "Synchronous Unbuffered (Unregistered)",
+        "configured_speed": "8000 MT/s",
+        "rated_speed": "8532 MT/s",
+        "manufacturer": "Micron Technology",
+        "part_number": "MT62F4G32D8DV-023 WT",
+        "rank": "2",
+        "configured_voltage": "0.5 V",
+        "channel_label": "Channel A",
+        "channel_source": "bank_locator:channel"
+      },
+      {
+        "locator": "DIMM 0",
+        "bank_locator": "P0 CHANNEL B",
+        "size": "16 GB",
+        "size_gib": 16.0,
+        "form_factor": "Other",
+        "type": "LPDDR5",
+        "type_detail": "Synchronous Unbuffered (Unregistered)",
+        "configured_speed": "8000 MT/s",
+        "rated_speed": "8532 MT/s",
+        "manufacturer": "Micron Technology",
+        "part_number": "MT62F4G32D8DV-023 WT",
+        "rank": "2",
+        "configured_voltage": "0.5 V",
+        "channel_label": "Channel B",
+        "channel_source": "bank_locator:channel"
+      },
+      {
+        "locator": "DIMM 0",
+        "bank_locator": "P0 CHANNEL C",
+        "size": "16 GB",
+        "size_gib": 16.0,
+        "form_factor": "Other",
+        "type": "LPDDR5",
+        "type_detail": "Synchronous Unbuffered (Unregistered)",
+        "configured_speed": "8000 MT/s",
+        "rated_speed": "8532 MT/s",
+        "manufacturer": "Micron Technology",
+        "part_number": "MT62F4G32D8DV-023 WT",
+        "rank": "2",
+        "configured_voltage": "0.5 V",
+        "channel_label": "Channel C",
+        "channel_source": "bank_locator:channel"
+      },
+      {
+        "locator": "DIMM 0",
+        "bank_locator": "P0 CHANNEL D",
+        "size": "16 GB",
+        "size_gib": 16.0,
+        "form_factor": "Other",
+        "type": "LPDDR5",
+        "type_detail": "Synchronous Unbuffered (Unregistered)",
+        "configured_speed": "8000 MT/s",
+        "rated_speed": "8532 MT/s",
+        "manufacturer": "Micron Technology",
+        "part_number": "MT62F4G32D8DV-023 WT",
+        "rank": "2",
+        "configured_voltage": "0.5 V",
+        "channel_label": "Channel D",
+        "channel_source": "bank_locator:channel"
+      },
+      {
+        "locator": "DIMM 0",
+        "bank_locator": "P0 CHANNEL E",
+        "size": "16 GB",
+        "size_gib": 16.0,
+        "form_factor": "Other",
+        "type": "LPDDR5",
+        "type_detail": "Synchronous Unbuffered (Unregistered)",
+        "configured_speed": "8000 MT/s",
+        "rated_speed": "8532 MT/s",
+        "manufacturer": "Micron Technology",
+        "part_number": "MT62F4G32D8DV-023 WT",
+        "rank": "2",
+        "configured_voltage": "0.5 V",
+        "channel_label": "Channel E",
+        "channel_source": "bank_locator:channel"
+      },
+      {
+        "locator": "DIMM 0",
+        "bank_locator": "P0 CHANNEL F",
+        "size": "16 GB",
+        "size_gib": 16.0,
+        "form_factor": "Other",
+        "type": "LPDDR5",
+        "type_detail": "Synchronous Unbuffered (Unregistered)",
+        "configured_speed": "8000 MT/s",
+        "rated_speed": "8532 MT/s",
+        "manufacturer": "Micron Technology",
+        "part_number": "MT62F4G32D8DV-023 WT",
+        "rank": "2",
+        "configured_voltage": "0.5 V",
+        "channel_label": "Channel F",
+        "channel_source": "bank_locator:channel"
+      },
+      {
+        "locator": "DIMM 0",
+        "bank_locator": "P0 CHANNEL G",
+        "size": "16 GB",
+        "size_gib": 16.0,
+        "form_factor": "Other",
+        "type": "LPDDR5",
+        "type_detail": "Synchronous Unbuffered (Unregistered)",
+        "configured_speed": "8000 MT/s",
+        "rated_speed": "8532 MT/s",
+        "manufacturer": "Micron Technology",
+        "part_number": "MT62F4G32D8DV-023 WT",
+        "rank": "2",
+        "configured_voltage": "0.5 V",
+        "channel_label": "Channel G",
+        "channel_source": "bank_locator:channel"
+      },
+      {
+        "locator": "DIMM 0",
+        "bank_locator": "P0 CHANNEL H",
+        "size": "16 GB",
+        "size_gib": 16.0,
+        "form_factor": "Other",
+        "type": "LPDDR5",
+        "type_detail": "Synchronous Unbuffered (Unregistered)",
+        "configured_speed": "8000 MT/s",
+        "rated_speed": "8532 MT/s",
+        "manufacturer": "Micron Technology",
+        "part_number": "MT62F4G32D8DV-023 WT",
+        "rank": "2",
+        "configured_voltage": "0.5 V",
+        "channel_label": "Channel H",
+        "channel_source": "bank_locator:channel"
+      }
+    ]
+  },
+  "storage": {
+    "devices": [
+      {
+        "name": "loop0",
+        "model": null,
+        "size": "19.6M",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/desktop-security-center/150"
+      },
+      {
+        "name": "loop1",
+        "model": null,
+        "size": "4K",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/bare/5"
+      },
+      {
+        "name": "loop2",
+        "model": null,
+        "size": "66.8M",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/core24/1587"
+      },
+      {
+        "name": "loop3",
+        "model": null,
+        "size": "273.7M",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/firefox/8107"
+      },
+      {
+        "name": "loop4",
+        "model": null,
+        "size": "16.5M",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/firmware-updater/226"
+      },
+      {
+        "name": "loop5",
+        "model": null,
+        "size": "20M",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/desktop-security-center/151"
+      },
+      {
+        "name": "loop6",
+        "model": null,
+        "size": "606.1M",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/gnome-46-2404/153"
+      },
+      {
+        "name": "loop7",
+        "model": null,
+        "size": "91.7M",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/gtk-common-themes/1535"
+      },
+      {
+        "name": "loop8",
+        "model": null,
+        "size": "395M",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/mesa-2404/1165"
+      },
+      {
+        "name": "loop9",
+        "model": null,
+        "size": "18.8M",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/prompting-client/204"
+      },
+      {
+        "name": "loop10",
+        "model": null,
+        "size": "15.7M",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/snap-store/1367"
+      },
+      {
+        "name": "loop11",
+        "model": null,
+        "size": "49.3M",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/snapd/26865"
+      },
+      {
+        "name": "loop12",
+        "model": null,
+        "size": "580K",
+        "type": "loop",
+        "tran": null,
+        "vendor": null,
+        "mountpoint": "/snap/snapd-desktop-integration/361"
+      },
+      {
+        "name": "sda",
+        "model": "Flash Drive",
+        "size": "0B",
+        "type": "disk",
+        "tran": "usb",
+        "vendor": "Glinet  ",
+        "mountpoint": null
+      },
+      {
+        "name": "sr0",
+        "model": "Optical Drive",
+        "size": "1024M",
+        "type": "rom",
+        "tran": "usb",
+        "vendor": "Glinet  ",
+        "mountpoint": null
+      },
+      {
+        "name": "nvme0n1",
+        "model": "ADATA LEGEND 900",
+        "size": "1.9T",
+        "type": "disk",
+        "tran": "nvme",
+        "vendor": null,
+        "mountpoint": null,
+        "children": [
+          {
+            "name": "nvme0n1p1",
+            "model": null,
+            "size": "1G",
+            "type": "part",
+            "tran": "nvme",
+            "vendor": null,
+            "mountpoint": "/boot/efi"
+          },
+          {
+            "name": "nvme0n1p2",
+            "model": null,
+            "size": "1.9T",
+            "type": "part",
+            "tran": "nvme",
+            "vendor": null,
+            "mountpoint": "/"
+          }
+        ]
+      }
+    ]
+  },
+  "network": {
+    "interfaces": [
+      {
+        "description": "Ethernet interface",
+        "product": "RTL8125 2.5GbE Controller",
+        "vendor": "Realtek Semiconductor Co., Ltd.",
+        "physical id": "0",
+        "bus info": "pci@0000:c1:00.0",
+        "logical name": "eno1",
+        "version": "05",
+        "serial": "84:47:09:5f:51:4a",
+        "size": "100Mbit/s",
+        "capacity": "1Gbit/s",
+        "width": "64 bits",
+        "clock": "33MHz",
+        "capabilities": "pm msi pciexpress msix vpd bus_master cap_list ethernet physical tp mii 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation",
+        "configuration": "autonegotiation=on broadcast=yes driver=r8169 driverversion=7.0.0-14-generic duplex=full firmware=rtl8125b-2_0.0.2 07/13/20 ip=10.11.11.154 latency=0 link=yes multicast=yes port=twisted pair speed=100Mbit/s",
+        "resources": "irq:25 ioport:f000(size=256) memory:dd200000-dd20ffff memory:dd210000-dd213fff"
+      },
+      {
+        "description": "Ethernet interface",
+        "product": "MT7925 (RZ717) Wi-Fi 7 160MHz",
+        "vendor": "MEDIATEK Corp.",
+        "physical id": "0",
+        "bus info": "pci@0000:c3:00.0",
+        "logical name": "wlp195s0",
+        "version": "00",
+        "serial": "4c:23:38:fb:3d:4f",
+        "width": "64 bits",
+        "clock": "33MHz",
+        "capabilities": "pciexpress msi pm bus_master cap_list ethernet physical",
+        "configuration": "broadcast=yes driver=mt7925e driverversion=7.0.0-14-generic firmware=____000000-20260106153120 ip=10.11.11.247 latency=0 link=yes multicast=yes",
+        "resources": "irq:155 memory:dc600000-dc7fffff memory:dc800000-dc807fff"
+      }
+    ]
+  },
+  "software": {
+    "pretty_name": "Ubuntu 26.04 LTS",
+    "os_release": "26.04 (Resolute Raccoon)",
+    "kernel": "Linux evo-x2 7.0.0-14-generic #14-Ubuntu SMP PREEMPT_DYNAMIC Mon Apr 13 11:09:53 UTC 2026 x86_64 GNU/Linux",
+    "kernel_cmdline": "BOOT_IMAGE=/boot/vmlinuz-7.0.0-14-generic root=UUID=541e259f-9259-41c4-adcb-9446e1dc155a ro quiet splash crashkernel=2G-4G:320M,4G-32G:512M,32G-64G:1024M,64G-128G:2048M,128G-:4096M",
+    "transparent_hugepage": "always [madvise] never",
+    "system_dmi": {
+      "Manufacturer": "GMKtec",
+      "Product Name": "NucBox_EVO-X2",
+      "Version": "Version 1.0",
+      "Serial Number": "Default string",
+      "UUID": "2e0bde00-2526-11f0-8cf1-74762f0c4300",
+      "Wake-up Type": "Power Switch",
+      "SKU Number": "EVO-X2-001",
+      "Family": "MINI"
+    }
+  },
+  "topology_artifacts": {
+    "text": null,
+    "xml": null,
+    "svg": null
+  },
+  "collection": {
+    "command_count": 25,
+    "status_counts": {
+      "captured": 22,
+      "skipped": 3
+    },
+    "commands": [
+      {
+        "command_id": "uname",
+        "command": "uname -a",
+        "sudo": false,
+        "optional": false,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/uname.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "os_release",
+        "command": "cat /etc/os-release",
+        "sudo": false,
+        "optional": false,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/os-release.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "lscpu",
+        "command": "lscpu",
+        "sudo": false,
+        "optional": false,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/lscpu.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "lscpu_topology",
+        "command": "lscpu -p=CPU,CORE,SOCKET,NODE,ONLINE",
+        "sudo": false,
+        "optional": false,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/lscpu-topology.csv",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "lscpu_cache",
+        "command": "lscpu -C",
+        "sudo": false,
+        "optional": true,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/lscpu-cache.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "cpuinfo",
+        "command": "cat /proc/cpuinfo",
+        "sudo": false,
+        "optional": false,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/cpuinfo.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "meminfo",
+        "command": "cat /proc/meminfo",
+        "sudo": false,
+        "optional": false,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/meminfo.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "numactl",
+        "command": "numactl --hardware",
+        "sudo": false,
+        "optional": false,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/numactl.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "lsblk",
+        "command": "lsblk --json -o NAME,MODEL,SIZE,TYPE,TRAN,VENDOR,MOUNTPOINT",
+        "sudo": false,
+        "optional": false,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/lsblk.json",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "df",
+        "command": "df -T",
+        "sudo": false,
+        "optional": false,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/df.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "ipaddr",
+        "command": "ip addr",
+        "sudo": false,
+        "optional": false,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/ipaddr.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "iproute",
+        "command": "ip route",
+        "sudo": false,
+        "optional": false,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/iproute.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "lspci",
+        "command": "lspci",
+        "sudo": false,
+        "optional": true,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/lspci.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "lspci_verbose",
+        "command": "lspci -vvv",
+        "sudo": true,
+        "optional": true,
+        "timeout": 900,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/lspci_verbose.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "lshw_network",
+        "command": "lshw -C network",
+        "sudo": true,
+        "optional": true,
+        "timeout": 900,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/lshw_network.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "dmi_system",
+        "command": "dmidecode -t system",
+        "sudo": true,
+        "optional": true,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/dmi_system.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "dmi_baseboard",
+        "command": "dmidecode -t baseboard",
+        "sudo": true,
+        "optional": true,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/dmi_baseboard.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "dmi_processor",
+        "command": "dmidecode -t processor",
+        "sudo": true,
+        "optional": true,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/dmi_processor.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "dmi_memory",
+        "command": "dmidecode -t memory",
+        "sudo": true,
+        "optional": true,
+        "timeout": 900,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/dmi_memory.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "cmdline",
+        "command": "cat /proc/cmdline",
+        "sudo": false,
+        "optional": false,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/cmdline.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "cpu_governor",
+        "command": "cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor",
+        "sudo": false,
+        "optional": true,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/cpu_governor.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "transparent_hugepage",
+        "command": "cat /sys/kernel/mm/transparent_hugepage/enabled",
+        "sudo": false,
+        "optional": true,
+        "timeout": 300,
+        "status": "captured",
+        "exit_status": 0,
+        "stdout_path": "raw/transparent_hugepage.txt",
+        "stderr_path": null,
+        "error": null
+      },
+      {
+        "command_id": "lstopo_text",
+        "command": "lstopo --of console",
+        "sudo": false,
+        "optional": true,
+        "timeout": 900,
+        "status": "skipped",
+        "exit_status": -1,
+        "stdout_path": null,
+        "stderr_path": "topology/lstopo.txt.stderr.txt",
+        "error": "command exited with status -1"
+      },
+      {
+        "command_id": "lstopo_xml",
+        "command": "lstopo --of xml",
+        "sudo": false,
+        "optional": true,
+        "timeout": 900,
+        "status": "skipped",
+        "exit_status": -1,
+        "stdout_path": null,
+        "stderr_path": "topology/lstopo.xml.stderr.txt",
+        "error": "command exited with status -1"
+      },
+      {
+        "command_id": "lstopo_svg",
+        "command": "lstopo --of svg",
+        "sudo": false,
+        "optional": true,
+        "timeout": 900,
+        "status": "skipped",
+        "exit_status": -1,
+        "stdout_path": null,
+        "stderr_path": "topology/lstopo.svg.stderr.txt",
+        "error": "command exited with status -1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+   "blockdevices": [
+      {
+         "name": "loop0",
+         "model": null,
+         "size": "19.6M",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/desktop-security-center/150"
+      },{
+         "name": "loop1",
+         "model": null,
+         "size": "4K",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/bare/5"
+      },{
+         "name": "loop2",
+         "model": null,
+         "size": "66.8M",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/core24/1587"
+      },{
+         "name": "loop3",
+         "model": null,
+         "size": "273.7M",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/firefox/8107"
+      },{
+         "name": "loop4",
+         "model": null,
+         "size": "16.5M",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/firmware-updater/226"
+      },{
+         "name": "loop5",
+         "model": null,
+         "size": "20M",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/desktop-security-center/151"
+      },{
+         "name": "loop6",
+         "model": null,
+         "size": "606.1M",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/gnome-46-2404/153"
+      },{
+         "name": "loop7",
+         "model": null,
+         "size": "91.7M",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/gtk-common-themes/1535"
+      },{
+         "name": "loop8",
+         "model": null,
+         "size": "395M",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/mesa-2404/1165"
+      },{
+         "name": "loop9",
+         "model": null,
+         "size": "18.8M",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/prompting-client/204"
+      },{
+         "name": "loop10",
+         "model": null,
+         "size": "15.7M",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/snap-store/1367"
+      },{
+         "name": "loop11",
+         "model": null,
+         "size": "49.3M",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/snapd/26865"
+      },{
+         "name": "loop12",
+         "model": null,
+         "size": "580K",
+         "type": "loop",
+         "tran": null,
+         "vendor": null,
+         "mountpoint": "/snap/snapd-desktop-integration/361"
+      },{
+         "name": "sda",
+         "model": "Flash Drive",
+         "size": "0B",
+         "type": "disk",
+         "tran": "usb",
+         "vendor": "Glinet  ",
+         "mountpoint": null
+      },{
+         "name": "sr0",
+         "model": "Optical Drive",
+         "size": "1024M",
+         "type": "rom",
+         "tran": "usb",
+         "vendor": "Glinet  ",
+         "mountpoint": null
+      },{
+         "name": "nvme0n1",
+         "model": "ADATA LEGEND 900",
+         "size": "1.9T",
+         "type": "disk",
+         "tran": "nvme",
+         "vendor": null,
+         "mountpoint": null,
+         "children": [
+            {
+               "name": "nvme0n1p1",
+               "model": null,
+               "size": "1G",
+               "type": "part",
+               "tran": "nvme",
+               "vendor": null,
+               "mountpoint": "/boot/efi"
+            },{
+               "name": "nvme0n1p2",
+               "model": null,
+               "size": "1.9T",
+               "type": "part",
+               "tran": "nvme",
+               "vendor": null,
+               "mountpoint": "/"
+            }
+         ]
+      }
+   ]
+}

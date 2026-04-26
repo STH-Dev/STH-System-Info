@@ -1,0 +1,10 @@
+Filesystem     Type      1K-blocks     Used  Available Use% Mounted on
+tmpfs          tmpfs      25729364     3008   25726356   1% /run
+/dev/nvme0n1p2 ext4     1966788624 15679032 1851128436   1% /
+tmpfs          tmpfs      64323408        0   64323408   0% /dev/shm
+efivarfs       efivarfs        128       44         80  36% /sys/firmware/efi/efivars
+none           tmpfs          1024        0       1024   0% /run/credentials/systemd-journald.service
+none           tmpfs          1024        0       1024   0% /run/credentials/systemd-resolved.service
+tmpfs          tmpfs      64323408        8   64323400   1% /tmp
+/dev/nvme0n1p1 vfat        1098632     6456    1092176   1% /boot/efi
+tmpfs          tmpfs      12864680       88   12864592   1% /run/user/1000

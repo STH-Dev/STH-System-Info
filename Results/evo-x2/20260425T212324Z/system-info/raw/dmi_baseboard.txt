@@ -1,0 +1,43 @@
+sthuser
+*******       
+# dmidecode 3.6
+Getting SMBIOS data from sysfs.
+SMBIOS 3.7.0 present.
+
+Handle 0x0002, DMI type 2, 15 bytes
+Base Board Information
+	Manufacturer: GMKtec
+	Product Name: GMKtec
+	Version: Version 1.0
+	Serial Number: AXB35095427H0111
+	Asset Tag: Default string
+	Features:
+		Board is a hosting board
+		Board is replaceable
+	Location In Chassis: Default string
+	Chassis Handle: 0x0003
+	Type: Motherboard
+	Contained Object Handles: 0
+
+Handle 0x0004, DMI type 10, 6 bytes
+On Board Device Information
+	Type: Video
+	Status: Enabled
+	Description:    To Be Filled By O.E.M.
+
+Handle 0x0039, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: OnBoard LAN
+	Type: Ethernet
+	Status: Enabled
+	Type Instance: 1
+	Bus Address: 0000:c1:00.0
+
+Handle 0x003A, DMI type 41, 11 bytes
+Onboard Device
+	Reference Designation: OnBoard Audio
+	Type: Sound
+	Status: Enabled
+	Type Instance: 1
+	Bus Address: 0000:c5:00.6
+
